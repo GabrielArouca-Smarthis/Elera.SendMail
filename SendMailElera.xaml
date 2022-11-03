@@ -1,0 +1,308 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="SendMailElera" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:umab="clr-namespace:UiPath.Mail.Activities.Business;assembly=UiPath.Mail.Activities" xmlns:umabh="clr-namespace:UiPath.Mail.Activities.Business.HtmlEditor;assembly=UiPath.Mail.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_initException" Type="InArgument(s:Exception)" />
+    <x:Property Name="in_getDataException" Type="InArgument(s:Exception)" />
+    <x:Property Name="in_businessException" Type="InArgument(ui:BusinessRuleException)" />
+    <x:Property Name="in_ErrorPrint" Type="InArgument(scg:List(x:String))" />
+    <x:Property Name="in_DtReport" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_MailBodyError" Type="InArgument(x:String)" />
+    <x:Property Name="in_ProjectName" Type="InArgument(x:String)" />
+    <x:Property Name="in_MailParameters" Type="InArgument(x:String)" />
+    <x:Property Name="in_MailFrom" Type="InArgument(x:String)" />
+    <x:Property Name="in_MailBodySucess" Type="InArgument(x:String)" />
+  </x:Members>
+  <this:SendMailElera.in_MailBodyError>
+    <InArgument x:TypeArguments="x:String" />
+  </this:SendMailElera.in_MailBodyError>
+  <this:SendMailElera.in_ProjectName>
+    <InArgument x:TypeArguments="x:String" />
+  </this:SendMailElera.in_ProjectName>
+  <this:SendMailElera.in_MailParameters>
+    <InArgument x:TypeArguments="x:String" />
+  </this:SendMailElera.in_MailParameters>
+  <this:SendMailElera.in_MailFrom>
+    <InArgument x:TypeArguments="x:String" />
+  </this:SendMailElera.in_MailFrom>
+  <this:SendMailElera.in_MailBodySucess>
+    <InArgument x:TypeArguments="x:String" />
+  </this:SendMailElera.in_MailBodySucess>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1848,3332</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>SendMailElera_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="36">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>UiPath.Mail.Activities.Business.HtmlEditor</x:String>
+      <x:String>UiPath.Mail.Activities.Business</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.Mail</x:String>
+      <x:String>UiPath.Mail.SMTP.Activities</x:String>
+      <x:String>UiPath.Mail.Activities</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="35">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="SendMailElera" sap:VirtualizedContainerService.HintSize="554,3267" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="mailBodySucess" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtReportSucess" />
+      <Variable x:TypeArguments="x:String" Name="sucessReport" />
+      <Variable x:TypeArguments="x:String" Name="nomeProcesso" />
+      <Variable x:TypeArguments="x:String" Name="processName" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <If Condition="[in_initException IsNot Nothing or in_getDataException IsNot Nothing or in_businessException isNot Nothing]" sap:VirtualizedContainerService.HintSize="512,1712" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Then>
+        <Sequence sap:VirtualizedContainerService.HintSize="476,1515" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="sd:DataTable" Name="dtReportErrors" />
+            <Variable x:TypeArguments="x:String" Name="errorReport" />
+            <Variable x:TypeArguments="x:String" Name="mailBodyError" />
+          </Sequence.Variables>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="Log Message - start" sap:VirtualizedContainerService.HintSize="434,101" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Sending the error report email&quot;]" />
+          <ui:ReadTextFile File="{x:Null}" sap2010:Annotation.AnnotationText="&#xD;&#xA;To modify the email body, it is necessary to create or copy and edit the file &quot;Error.txt&quot; with the HTML text, inside the data/input folder of the project." Content="[mailBodyError]" DisplayName="Read Text File" FileName="[in_MailBodyError]" sap:VirtualizedContainerService.HintSize="434,146" sap2010:WorkflowViewState.IdRef="ReadTextFile_1">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:ReadTextFile>
+          <Assign sap:VirtualizedContainerService.HintSize="434,70" sap2010:WorkflowViewState.IdRef="Assign_1">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[nomeProcesso]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[in_ProjectName]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <umab:CreateHtmlContent sap2010:Annotation.AnnotationText="This activity will make the process starts automatically with &quot;Prezados, o processo (NomeDoProcesso)&quot;." DisplayName="Nome Processo HTML Content" sap:VirtualizedContainerService.HintSize="434,203" HtmlContent="[processName]" sap2010:WorkflowViewState.IdRef="CreateHtmlContent_1">
+            <umab:CreateHtmlContent.HtmlContentArg>
+              <umabh:HtmlContentArgument FilePath=".data/HtmlContent1.html">
+                <umabh:HtmlContentArgument.RuntimeImages>
+                  <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                </umabh:HtmlContentArgument.RuntimeImages>
+                <umabh:HtmlContentArgument.ValueMappings>
+                  <scg:List x:TypeArguments="umabh:HtmlValueMappingBase" Capacity="4">
+                    <umabh:HtmlTextValueMapping Name="Valor" Value="[nomeProcesso]" />
+                    <umabh:HtmlTableValueMapping Name="Tabela" Value="[in_DtReport]" />
+                  </scg:List>
+                </umabh:HtmlContentArgument.ValueMappings>
+              </umabh:HtmlContentArgument>
+            </umab:CreateHtmlContent.HtmlContentArg>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </umab:CreateHtmlContent>
+          <Assign sap2010:Annotation.AnnotationText="This assign will only keep the contents of the &quot;dtReport&quot; where the &quot;Status&quot; is equal to System Error or Bussines Error." sap:VirtualizedContainerService.HintSize="434,127" sap2010:WorkflowViewState.IdRef="Assign_2">
+            <Assign.To>
+              <OutArgument x:TypeArguments="sd:DataTable">[dtReportErrors]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="sd:DataTable">[in_dtReport.AsEnumerable().Where(Function(row) row("Status").ToString.Equals("System Error") Or row("Status").ToString.Equals("Business Exception")).CopyToDataTable]</InArgument>
+            </Assign.Value>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </Assign>
+          <umab:CreateHtmlContent sap2010:Annotation.AnnotationText="This activity will make the process end with the &quot;dtReport&quot; itens that &quot;Status&quot; are equal to &quot;System Error&quot; or &quot;Business Exception&quot;.&#xD;&#xA;&#xD;&#xA;To send the status as success and error of each item processed, you need to add each of the queue item statuses in dtReport." DisplayName="dtReport HTML Content" sap:VirtualizedContainerService.HintSize="434,248" HtmlContent="[errorReport]" sap2010:WorkflowViewState.IdRef="CreateHtmlContent_2">
+            <umab:CreateHtmlContent.HtmlContentArg>
+              <umabh:HtmlContentArgument FilePath=".data/HtmlContent2.html">
+                <umabh:HtmlContentArgument.RuntimeImages>
+                  <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                </umabh:HtmlContentArgument.RuntimeImages>
+                <umabh:HtmlContentArgument.ValueMappings>
+                  <scg:List x:TypeArguments="umabh:HtmlValueMappingBase" Capacity="4">
+                    <umabh:HtmlTableValueMapping Name="Tabela" Value="[dtReportErrors]" />
+                  </scg:List>
+                </umabh:HtmlContentArgument.ValueMappings>
+              </umabh:HtmlContentArgument>
+            </umab:CreateHtmlContent.HtmlContentArg>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </umab:CreateHtmlContent>
+          <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" Email="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" Password="{x:Null}" ReplyTo="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" UseOAuth="{x:Null}" sap2010:Annotation.AnnotationText="Port and Servers just have to be changed on the Orchestrator on the &quot;mailParameters&quot; Asset,&#xA;MailFrom just have to be changed on the Orchestrator in &quot;Global_in_email_from_RP&quot; Asset.&#xD;&#xA;&#xD;&#xA;To get the prints just add the Take Screenshot Workflow in the project exception and then create a list with all the error prints." AttachmentsCollection="[in_ErrorPrint]" Body="[processName + &quot; &quot; + string.Format(mailBodyError, in_ProjectName) + &quot; &quot; + errorReport]" DisplayName="Send SMTP Mail Message" EnableSSL="True" From="[in_MailFrom.ToString]" sap:VirtualizedContainerService.HintSize="434,290" sap2010:WorkflowViewState.IdRef="SendMail_1" IgnoreCRL="False" IsBodyHtml="False" Port="[cInt((in_MailParameters.ToString).Split(&quot;,&quot;c)(1))]" SecureConnection="Auto" Server="[(in_MailParameters.ToString).Split(&quot;,&quot;c)(0)]" Subject="Error Mail" To="elera-sup@smarthis.com.br">
+            <ui:SendMail.Files>
+              <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4" />
+            </ui:SendMail.Files>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:SendMail>
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence sap:VirtualizedContainerService.HintSize="286,81" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Sequence>
+      </If.Else>
+    </If>
+    <ui:LogMessage DisplayName="Log Message - start" sap:VirtualizedContainerService.HintSize="512,101" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Sending the error report email&quot;]" />
+    <ui:ReadTextFile File="{x:Null}" sap2010:Annotation.AnnotationText="To modify the email body, it is necessary to create or copy and edit the file &quot;Sucess.txt&quot; with the HTML text, inside the data/input folder of the project." Content="[mailBodySucess]" DisplayName="Read Text File" FileName="[in_MailBodySucess.ToString]" sap:VirtualizedContainerService.HintSize="512,146" sap2010:WorkflowViewState.IdRef="ReadTextFile_2">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ReadTextFile>
+    <Assign sap:VirtualizedContainerService.HintSize="512,70" sap2010:WorkflowViewState.IdRef="Assign_3">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[nomeProcesso]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[in_ProjectName.ToString]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <umab:CreateHtmlContent sap2010:Annotation.AnnotationText="This activity will make the process starts automatically with &quot;Prezados, o processo (NomeDoProcesso)&quot;." DisplayName="Nome Processo HTML Content" sap:VirtualizedContainerService.HintSize="512,203" HtmlContent="[processName]" sap2010:WorkflowViewState.IdRef="CreateHtmlContent_3">
+      <umab:CreateHtmlContent.HtmlContentArg>
+        <umabh:HtmlContentArgument FilePath=".data/HtmlContent1.html">
+          <umabh:HtmlContentArgument.RuntimeImages>
+            <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+          </umabh:HtmlContentArgument.RuntimeImages>
+          <umabh:HtmlContentArgument.ValueMappings>
+            <scg:List x:TypeArguments="umabh:HtmlValueMappingBase" Capacity="4">
+              <umabh:HtmlTextValueMapping Name="Valor" Value="[nomeProcesso]" />
+              <umabh:HtmlTableValueMapping Name="Tabela" Value="[in_DtReport]" />
+            </scg:List>
+          </umabh:HtmlContentArgument.ValueMappings>
+        </umabh:HtmlContentArgument>
+      </umab:CreateHtmlContent.HtmlContentArg>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </umab:CreateHtmlContent>
+    <Assign sap2010:Annotation.AnnotationText="This assign will only keep the contents of the &quot;dtReport&quot; where the &quot;Status&quot; is equal to Sucess." sap:VirtualizedContainerService.HintSize="512,127" sap2010:WorkflowViewState.IdRef="Assign_4">
+      <Assign.To>
+        <OutArgument x:TypeArguments="sd:DataTable">[dtReportSucess]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="sd:DataTable">[in_dtReport.AsEnumerable().Where(Function(row) row("Status").ToString.Equals("Sucess")).CopyToDataTable]</InArgument>
+      </Assign.Value>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </Assign>
+    <umab:CreateHtmlContent sap2010:Annotation.AnnotationText="This activity will make the process end with the &quot;dtReport&quot; itens that &quot;Status&quot; are equal to &quot;Sucess&quot;.&#xD;&#xA;&#xD;&#xA;To send the status as success and error of each item processed, you need to add each of the queue item statuses in dtReport." DisplayName="dtReport HTML Content" sap:VirtualizedContainerService.HintSize="512,248" HtmlContent="[sucessReport]" sap2010:WorkflowViewState.IdRef="CreateHtmlContent_4">
+      <umab:CreateHtmlContent.HtmlContentArg>
+        <umabh:HtmlContentArgument FilePath=".data/HtmlContent2.html">
+          <umabh:HtmlContentArgument.RuntimeImages>
+            <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+          </umabh:HtmlContentArgument.RuntimeImages>
+          <umabh:HtmlContentArgument.ValueMappings>
+            <scg:List x:TypeArguments="umabh:HtmlValueMappingBase" Capacity="4">
+              <umabh:HtmlTableValueMapping Name="Tabela" Value="[dtReportSucess]" />
+            </scg:List>
+          </umabh:HtmlContentArgument.ValueMappings>
+        </umabh:HtmlContentArgument>
+      </umab:CreateHtmlContent.HtmlContentArg>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </umab:CreateHtmlContent>
+    <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" Email="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" Password="{x:Null}" ReplyTo="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" UseOAuth="{x:Null}" sap2010:Annotation.AnnotationText="Port and Servers just have to be changed on the Orchestrator on the &quot;mailParameters&quot; Asset,&#xA;MailFrom just have to be changed on the Orchestrator in &quot;Global_in_email_from_RP&quot; Asset.&#xD;&#xA;&#xD;&#xA;To get the prints just add the Take Screenshot Workflow in the project exception and then create a list with all the error prints." Body="[processName + &quot; &quot; + string.Format(mailBodySucess, in_ProjectName.toString) + &quot; &quot; + sucessReport]" DisplayName="Send SMTP Mail Message" EnableSSL="True" From="[in_MailFrom.ToString]" sap:VirtualizedContainerService.HintSize="512,290" sap2010:WorkflowViewState.IdRef="SendMail_2" IgnoreCRL="False" IsBodyHtml="False" Port="[cInt((in_MailParameters.ToString).Split(&quot;,&quot;c)(1))]" SecureConnection="Auto" Server="[(in_MailParameters.ToString).Split(&quot;,&quot;c)(0)]" Subject="Sucess Mail" To="elera-sup@smarthis.com.br">
+      <ui:SendMail.Files>
+        <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4" />
+      </ui:SendMail.Files>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:SendMail>
+  </Sequence>
+</Activity>
